@@ -5,7 +5,7 @@ int main() {
 
   while (kod != 255) {
     for (int i = 0; i < 16; i++) {
-      printf("\x1b[31m%i\x1b[0m:%c ", i + 1, kod);
+      printf("%c ", kod);
       if (kod == 255) {
         printf("\n");
         return 0;
