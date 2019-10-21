@@ -20,8 +20,8 @@ int findBinary(int n) {
 }
 
 int main() {
-  int number;  
-  
+  int number;
+
   number = getNumber();
   findBinary(number);
   printf("\n");
