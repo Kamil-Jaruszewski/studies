@@ -1,17 +1,19 @@
 #include <stdio.h>
 #include <string.h>
 
+void sklej(char *wska, char *wskb) {
+  strcat(wska, wskb);
+  puts(wska);
+}
+
 int main() {
-  char *a = "tekst1";
-  char *b = "2tekst2";
+  char a[30] = "tekst1";
+  char b[30] = "2tekst2";
 
   printf("%s\n", a);
   printf("%s\n", b);
 
-  a = strcat(*a, *b);
+  sklej(&a, &b);
 
-  printf("%s\n", a);
-
-  printf("\n\n");
   return 0;
 }
