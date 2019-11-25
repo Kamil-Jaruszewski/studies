@@ -1,11 +1,16 @@
 #include <stdio.h>
 
 int getNumber() {
-  int n;
+  int n = 0;
   printf("Podaj liczbę: ");
   fflush( stdout );
-  scanf("%d", &n);
-  return n;
+  int isNumber = scanf("%d", &n);
+
+  if (isNumber) {
+    return n;
+  } else {
+    printf("To nie liczba!\n");
+  }
 }
 
 int findBinary(int n) {
@@ -20,10 +25,17 @@ int findBinary(int n) {
 }
 
 int main() {
-  int number;
+  int n = 0;
+  printf("Podaj liczbę: ");
+  fflush( stdout );
+  int isNumber = scanf("%d", &n);
 
-  number = getNumber();
-  findBinary(number);
+  if (!isNumber) {
+    printf("To nie liczba!\n");
+    return 0;
+  }
+
+  findBinary(n);
   printf("\n");
 
   return 0;
