@@ -1,19 +1,36 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
-#include <ctype.h>
 
-int getNumber() {
-  int n = 0;
-  printf("Podaj liczbę: ");
-  fflush( stdout );
-  int isNumber = scanf("%d", &n);
+int checkNumber(char *input) {
+  int i = 0;
 
-  if (isNumber) {
-    return n;
-  } else {
-    printf("To nie liczba!\n");
+  while (*input != '\0') {
+    if (*input >= 48 && *input <= 57) {
+      if (i == 0 && *input == 48) {
+        printf("Błędne dane!\n");
+        return 0;
+      }
+      input++;
+    } else {
+      printf("Błędne dane!\n");
+      return 0;
+    }
+
+    i++;
   }
+
+  input = input - i;
+  int number = 0;
+
+  while (*input != '\0') {
+    number = number + (*input - '0');
+    number = number * 10;
+    input++;
+  }
+
+  number = number / 10;
+
+  return number;
 }
 
 int findBinary(int n) {
@@ -28,40 +45,14 @@ int findBinary(int n) {
 }
 
 int main() {
-  char *p, s[32];
-  int n;
+  char input[32];
 
-  printf("Podaj liczbę: ");
-  fflush( stdout );
-
-  while (fgets(s, sizeof(s), stdin)) {
-    fflush(stdout);
-    n = strtoq(s, &p, 10);
-    fflush(stdout);
-
-    if (p == s || *p != '\n' || *p != '-') {
-      fflush(stdout);
-      printf("To nie jest poprawne wejście dla tego ćwiczenia! Podaj liczbę: ");
-      fflush(stdout);
-    } else {
-      fflush(stdout);
-      break;
-      fflush(stdout);
-
-    };
-  }
+  printf("Podaj liczbe: ");
   fflush(stdout);
+  scanf("%s", &input);
 
-  printf("\n");
-
-  fflush(stdout);
-
-  findBinary(n);
-
-  fflush(stdout);
-
-  printf("\n");
-  fflush(stdout);
+  int number = checkNumber(input);
+  findBinary(number);
 
   return 0;
 }
