@@ -10,7 +10,6 @@ double doSqrt(double liczba) {
   return wynik;
 }
 
-
 double doSin(double liczba) {
   double wynik = sin(liczba);
   printf("sin(%f) = %f", liczba, wynik);
@@ -37,6 +36,10 @@ int main() {
   wskdoExp= doExp;
 
   oblicz(wskdoSqrt, 123.0);
+  printf("\n");
+  oblicz(wskdoSin, 123.0);
+  printf("\n");
+  oblicz(wskdoExp, 123.0);
   printf("\n");
   return 0;
 }
