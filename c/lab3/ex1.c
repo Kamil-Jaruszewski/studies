@@ -52,7 +52,7 @@ int main() {
   scanf("%s", &input);
 
   int number = checkNumber(input);
-  findBinary(number);
+  if (number) findBinary(number);
 
   return 0;
 }
