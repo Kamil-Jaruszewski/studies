@@ -133,9 +133,9 @@ int main() {
   } while (i < n);
 
   printf("\n\nWyszukiwanie: \n");
-  // findStudent(studenci, n);
+  findStudent(studenci, n);
 
-  // findHighetsMark(studenci, n);
+  findHighetsMark(studenci, n);
 
   findHighetsAvarege(studenci, n);
 
