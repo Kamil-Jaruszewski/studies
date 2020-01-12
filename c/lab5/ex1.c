@@ -37,6 +37,61 @@ void findStudent(struct student *studenci, int size) {
   return;
 }
 
+void findHighetsMark(struct student *studenci, int size) {
+  int choose, max = 2, studentMax = 0;
+
+  printf("Studenta z najwyzsza ocena z jakiego przedmiotu znalezc?\n");
+  printf("Podstawy programiwania (1), Podstawy sys-op (2), Alg. i str. danych (3): ");
+  fflush( stdout );
+  scanf(" %d", &choose);
+
+  if (choose == 1) {
+    for (int i = 0; i < size; i++) {
+      if (studenci[i].ocena1 > max) {
+        max = studenci[i].ocena1;
+        studentMax = i;
+      }
+    }
+    printf("Najwyzsza ocene z Podstaw programowania ma student o nazwisku: %s", studenci[studentMax].nazwisko);
+  } else if (choose == 2 ) {
+    for (int i = 0; i < size; i++) {
+      if (studenci[i].ocena2 > max) {
+        max = studenci[i].ocena2;
+        studentMax = i;
+      }
+    }
+    printf("Najwyzsza ocene z Podstaw sys-op ma student o nazwisku: %s", studenci[studentMax].nazwisko);
+  } else if (choose == 3) {
+    for (int i = 0; i < size; i++) {
+      if (studenci[i].ocena3 > max) {
+        max = studenci[i].ocena3;
+        studentMax = i;
+      }
+    }
+    printf("Najwyzsza ocene z Alg. i str. danych ma student o nazwisku: %s", studenci[studentMax].nazwisko);
+  } else {
+    printf("Nie ma takiego przedmiotu");
+  }
+
+  return;
+}
+
+void findHighetsAvarege(struct student *studenci, int size) {
+  float maxAvg = 0;
+  int studentIndex;
+
+  for (int i = 0; i < size; i++) {
+    int tempAvg = (studenci[i].ocena1 + studenci[i].ocena2 + studenci[i].ocena3) / 3;
+
+    if (tempAvg > maxAvg) {
+      maxAvg = tempAvg;
+      studentIndex = i;
+    };
+  }
+
+  printf("Najwyzsza srednia ocen ma student o nazwisku: %s i wynosi ona %f", studenci[studentIndex].nazwisko, maxAvg);
+}
+
 int main() {
   int n;
   printf("Podaj liczbe studentow: "); // enter count of students
@@ -78,7 +133,11 @@ int main() {
   } while (i < n);
 
   printf("\n\nWyszukiwanie: \n");
-  findStudent(studenci, n);
+  // findStudent(studenci, n);
+
+  // findHighetsMark(studenci, n);
+
+  findHighetsAvarege(studenci, n);
 
   return 0;
 }
