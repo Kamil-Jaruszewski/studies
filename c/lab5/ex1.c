@@ -1,6 +1,11 @@
 #include <stdio.h>
 
 int main() {
+  int n;
+  printf("Podaj liczbe studentow: ");
+  fflush( stdout );
+  scanf(" %d", &n);
+
   struct student {
     char nazwisko[20];
     char data_ur[11];
@@ -8,9 +13,9 @@ int main() {
     int ocena1;
     int ocena2;
     int ocena3;
-  } studenci[3];
+  } studenci[n];
 
-  int n = 3, i = 0;
+  int i = 0;
 
   do {
     printf("Podaj dane studenta:\n");
