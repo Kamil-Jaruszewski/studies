@@ -38,7 +38,7 @@ int menu() {
   std::cout << "   2. Wyszukaj studenta wg nazwiska\n";
   std::cout << "   3. Posortowanie studentow alfabetycznie\n";
   std::cout << "   4. Student ktory najwyzsza ocene z danego przedmiotu\n";
-  std::cout << "   5. Student z najwyzsza ocena\n";
+  std::cout << "   5. Student z najwyzsza srednia ocen\n";
   std::cout << "A więc?: ";
   std::cin >> option;
   std::cout << "\n";
@@ -128,6 +128,22 @@ void findHighestMark() {
   }
 }
 
+void findHighestAvarage() {
+  float maxAvg = 0;
+  int studentIndex, size = studenci.size();
+
+  for (int i = 0; i < size; i++) {
+    int tempAvg = (studenci[i].ocena1 + studenci[i].ocena2 + studenci[i].ocena3) / 3;
+
+    if (tempAvg > maxAvg) {
+      maxAvg = tempAvg;
+      studentIndex = i;
+    }
+  }
+
+  std::cout << "Najwyzsza srednia ocen ma student o nazwisku: " << studenci[studentIndex].nazwisko << " i wynosi ona: " << maxAvg << "\n";
+}
+
 int main() {
   int ile;
 
@@ -150,6 +166,9 @@ int main() {
       break;
     case 4:
       findHighestMark();
+      break;
+    case 5:
+      findHighestAvarage();
       break;
     default:
       break;
