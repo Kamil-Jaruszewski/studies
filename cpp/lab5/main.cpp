@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string.h>
+#include <algorithm>
 
 class Student {
   public:
@@ -30,6 +31,18 @@ class Student {
 };
 
 std::vector<Student> studenci;
+
+void showStudents() {
+  for (int i = 0; i < studenci.size(); i++) {
+    std::cout << "\n\n";
+    std::cout << "Nazwisko: " << studenci[i].nazwisko << "\n";
+    std::cout << "Data urodzenia: " << studenci[i].data_ur << "\n";
+    std::cout << "Podstawy programowania: " << studenci[i].ocena1 << "\n";
+    std::cout << "Podstawy sys-op: " << studenci[i].ocena2 << "\n";
+    std::cout << "Alg. i str. danych: " << studenci[i].ocena3 << "\n";
+  }
+  std::cout << "\n\n";
+}
 
 int menu() {
   int option = 0;
@@ -144,6 +157,15 @@ void findHighestAvarage() {
   std::cout << "Najwyzsza srednia ocen ma student o nazwisku: " << studenci[studentIndex].nazwisko << " i wynosi ona: " << maxAvg << "\n";
 }
 
+int posort(const Student& a, const Student& b) {
+  return strcmp(a.nazwisko, b.nazwisko);
+}
+
+void sortStudents() {
+  std::sort(studenci.begin(), studenci.end(), posort);
+  return;
+}
+
 int main() {
   int ile;
 
@@ -155,14 +177,19 @@ int main() {
     studenci.push_back(new_student);
   }
 
+  showStudents();
+
   switch (menu()) {
     case 1:
       removeStudent();
+      showStudents();
       break;
     case 2:
       findStudent();
       break;
     case 3:
+      sortStudents();
+      showStudents();
       break;
     case 4:
       findHighestMark();
