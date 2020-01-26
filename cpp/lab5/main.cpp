@@ -64,6 +64,26 @@ void findStudent() {
     }
   }
 
+  std::cout << "Nie znaleziono studenta o nazwisku: " << text << "!";
+
+  return;
+}
+
+void removeStudent() {
+  char text[32];
+  std::cout << "Podaj naziwsko studenta, ktorego chcesz usunac: ";
+  std::cin >> text;
+
+  for (int i = 0; i < studenci.size(); i++) {
+    if (strcmp(text, studenci[i].nazwisko) == 0) {
+      studenci.erase(studenci.begin() + i, studenci.begin()+i+1);
+      std::cout << "Student o nawisku: " << text << " zostal usuniety poprawnie";
+      return;
+    }
+  }
+
+  std::cout << "Nie znaleziono studenta!";
+
   return;
 }
 
@@ -80,7 +100,7 @@ int main() {
 
   switch (menu()) {
     case 1:
-      /* code */
+      removeStudent();
       break;
     case 2:
       findStudent();
