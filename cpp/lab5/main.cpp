@@ -87,6 +87,47 @@ void removeStudent() {
   return;
 }
 
+void findHighestMark() {
+  int choose, max = 2, studentMax = 0, size = studenci.size();
+
+  std::cout << "Studenta z najwyzsza ocena z jakiego przedmiotu znalezc?\n";
+  std::cout << "Podstawy programowania (1), Podstawy sys-op (2), Alg. i str. danych (3): ";
+  std::cin >> choose;
+
+  switch (choose)
+  {
+  case 1:
+    for (int i = 0; i < size; i++) {
+      if (studenci[i].ocena1 > max) {
+        max = studenci[i].ocena1;
+        studentMax = i;
+      }
+    }
+    std::cout << "Najwyzsza ocene z podstaw programowania ma student o nazwisku: " << studenci[studentMax].nazwisko << "\n";
+    break;
+  case 2:
+    for (int i = 0; i < size; i++) {
+      if (studenci[i].ocena2 > max) {
+        max = studenci[i].ocena2;
+        studentMax = i;
+      }
+    }
+    std::cout << "Najwyzsza ocene z sys-op ma student o nazwisku: " << studenci[studentMax].nazwisko << "\n";
+    break;
+  case 3:
+    for (int i = 0; i < size; i++) {
+      if (studenci[i].ocena3 > max) {
+        max = studenci[i].ocena3;
+        studentMax = i;
+      }
+    }
+    std::cout << "Najwyzsza ocene z alg. i str. danych ma student o nazwisku: " << studenci[studentMax].nazwisko << "\n";
+    break;
+  default:
+    break;
+  }
+}
+
 int main() {
   int ile;
 
@@ -104,6 +145,11 @@ int main() {
       break;
     case 2:
       findStudent();
+      break;
+    case 3:
+      break;
+    case 4:
+      findHighestMark();
       break;
     default:
       break;
