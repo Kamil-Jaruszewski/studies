@@ -1,8 +1,10 @@
 #include <iostream>
-#include <list>
-#include <cstring>
+#include <vector>
+#include <string.h>
 
 class Student {
+  public:
+
   char nazwisko[20];
   char data_ur[11];
   int nr_index;
@@ -10,7 +12,6 @@ class Student {
   int ocena2;
   int ocena3;
 
-  public:
   Student() {
     std::cout << "Podaj nazwisko: ";
     std::cin >> nazwisko;
@@ -28,7 +29,7 @@ class Student {
   }
 };
 
-std::list<Student> studenci;
+std::vector<Student> studenci;
 
 int menu() {
   int option = 0;
@@ -38,7 +39,9 @@ int menu() {
   std::cout << "   3. Posortowanie studentow alfabetycznie\n";
   std::cout << "   4. Student ktory najwyzsza ocene z danego przedmiotu\n";
   std::cout << "   5. Student z najwyzsza ocena\n";
-
+  std::cout << "A więc?: ";
+  std::cin >> option;
+  std::cout << "\n";
   return option;
 }
 
@@ -49,7 +52,16 @@ void findStudent() {
   std::cin >> text;
 
   for (int i = 0; i < studenci.size(); i++) {
-    // if (text == studenci)
+    if (strcmp(text, studenci[i].nazwisko) == 0) {
+      std::cout << "O to dane znalezionego studenta:\n";
+
+      std::cout << "Nazwisko: " << studenci[i].nazwisko << "\n";
+      std::cout << "Data urodzenia: " << studenci[i].data_ur << "\n";
+      std::cout << "Podstawy programowania: " << studenci[i].ocena1 << "\n";
+      std::cout << "Podstawy sys-operacyjnych: " << studenci[i].ocena2 << "\n";
+      std::cout << "Algorytmy i struktury danych: " << studenci[i].ocena3 << "\n";
+      return;
+    }
   }
 
   return;
@@ -66,16 +78,15 @@ int main() {
     studenci.push_back(new_student);
   }
 
-  switch (menu())
-  {
-  case 1:
-    /* code */
-    break;
-  case 2:
-    findStudent();
-    break;
-  default:
-    break;
+  switch (menu()) {
+    case 1:
+      /* code */
+      break;
+    case 2:
+      findStudent();
+      break;
+    default:
+      break;
   }
 
   return 0;
