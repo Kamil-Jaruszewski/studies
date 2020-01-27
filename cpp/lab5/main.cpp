@@ -52,7 +52,7 @@ int menu() {
   std::cout << "   3. Posortowanie studentow alfabetycznie\n";
   std::cout << "   4. Student ktory najwyzsza ocene z danego przedmiotu\n";
   std::cout << "   5. Student z najwyzsza srednia ocen\n";
-  std::cout << "A więc?: ";
+  //std::cout << "A więc?: ";
   std::cin >> option;
   std::cout << "\n";
   return option;
